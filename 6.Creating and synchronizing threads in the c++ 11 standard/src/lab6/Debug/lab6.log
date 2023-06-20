@@ -1,0 +1,5 @@
+﻿  lab6.cpp
+C:\Danik\OSI\lab6\lab6\lab6.cpp(18,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Danik\OSI\lab6\lab6\lab6.cpp(25,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Danik\OSI\lab6\lab6\lab6.cpp(36,23): warning C4018: <: несоответствие типов со знаком и без знака
+  lab6.vcxproj -> C:\Danik\OSI\lab6\Debug\lab6.exe
