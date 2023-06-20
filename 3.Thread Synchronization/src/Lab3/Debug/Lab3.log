@@ -1,0 +1,5 @@
+﻿  Lab3.cpp
+C:\Danik\OSI\Lab3\Lab3\Lab3.cpp(22,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Danik\OSI\Lab3\Lab3\Lab3.cpp(30,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Danik\OSI\Lab3\Lab3\Lab3.cpp(47,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Lab3.vcxproj -> C:\Danik\OSI\Lab3\Debug\Lab3.exe
