@@ -25,7 +25,8 @@ Parent Process:
 
 1. Entering an array:
 
-```
+
+``` cpp
 int size = 0;
 cout << "Enter size of array:  ";
 cin >> size;
@@ -34,13 +35,13 @@ for (int i = 0; i < size; i++) {
     cout << "Enter data for array[" + to_string(i) + "]: ";
     cin >> array[i];
 }
-```
+``` 
 
 Here the program asks the user for the size of the array and its elements.
 
 2. Formation of the command line:
 
-```
+``` cpp
 int j = 0;
 string temp = "";
 
@@ -53,13 +54,13 @@ for (int i = 0; i < size; i++) {
 char* command_line = new char[temp.length() + 1];
 strcpy(command_line, temp.c_str());
 
-```
+``` 
 
 Here, the array elements are combined into a single line with space delimiters, and then the string is converted into an array of char characters, which will be used as a command line for the child process.
 
 3. Creating and launching a child process:
 
-```
+``` cpp
 char child_process_name[] = "C:\\Danik\\OSI\\Lab2\\Debug\\Lab2.exe";
 STARTUPINFO startup_info;
 PROCESS_INFORMATION process_information;
@@ -71,7 +72,7 @@ startup_info.dwY = 500;
 ```
 Here the STARTUPINFO and PROCESS_INFORMATION structures are initialized, and the path to the executable file of the child process is also set.
 
-```
+``` cpp
 if (CreateProcess(child_process_name, command_line, NULL,
     NULL, false, CREATE_NEW_CONSOLE,
     NULL, NULL, &startup_info, &process_information)) {
