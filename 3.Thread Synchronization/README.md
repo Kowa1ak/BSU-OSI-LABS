@@ -45,7 +45,7 @@ the critical section, with the main thread - the event!):
 
 1. work Function:
 
-```
+``` cpp
 
 DWORD WINAPI work(LPVOID lpParam) {
     EnterCriticalSection(&cs);
@@ -78,7 +78,7 @@ This function is executed by the first thread. It moves all occurrences of X to 
 
 2. CountElement Function:
 
-```
+``` cpp
 DWORD WINAPI CountElement(LPVOID lpParam) {
     EnterCriticalSection(&cs);
 	cout << "поток count_k";
@@ -99,7 +99,7 @@ This function is executed by the second thread. It counts the occurrences of X i
 
 3. Main Function:
 
-```
+``` cpp
 int main() {
 	InitializeCriticalSection(&cs);
 	event = CreateEvent(NULL, FALSE, FALSE, NULL);
