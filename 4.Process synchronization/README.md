@@ -45,7 +45,7 @@ processes should be temporarily blocked using a mutex;
 
 1. main Function:
 
-```
+``` cpp
 int main(int argc, char *argv[])
 {
     // ...
@@ -55,7 +55,7 @@ The main function receives command-line arguments argc and argv. The child proce
 
 2. Opening Mutex and ChildEvent:
 
-```
+``` cpp
 hMutex = OpenMutexW(SYNCHRONIZE, FALSE, L"Mutex");
 // Error handling
 hEvent = OpenEventW(EVENT_MODIFY_STATE, FALSE, L"ChildEvent " + atoi(argv[1]));
@@ -64,7 +64,7 @@ hEvent = OpenEventW(EVENT_MODIFY_STATE, FALSE, L"ChildEvent " + atoi(argv[1]));
 
 3. Processing Events:
 
-```
+``` cpp
 string buffer;
 for (int i = 0, msg, nMsg = atoi(argv[0]); i < nMsg; i++)
 {
@@ -79,7 +79,7 @@ The child process enters a loop that iterates based on the argument argv[0]. In 
 
 4. Setting ChildEndedEvent and Cleanup:
 
-```
+``` cpp
 SetEvent(hEndedEvent);
 
 CloseHandle(hMutex);
@@ -92,7 +92,7 @@ After processing all events, the child process sets the "ChildEndedEvent" to not
 #### Parent Process:
 1. main Function:
 
-```
+``` cpp
 int main(int argc, char *argv[])
 {
     // ...
@@ -108,7 +108,7 @@ hEvent = OpenEventW(EVENT_MODIFY_STATE, FALSE, L"ParentEvent " + atoi(argv[1]));
 // Error handling
 ```
 3. Processing Events:
-```
+``` cpp
 string buffer;
 for (int i = 0, nMsg = atoi(argv[0]); i < nMsg; i++)
 {
@@ -121,7 +121,7 @@ for (int i = 0, nMsg = atoi(argv[0]); i < nMsg; i++)
 ```
 The parent process enters a loop that iterates based on the argument argv[0]. In each iteration, the process waits for the semaphore, reads user input, sets the corresponding "ParentEvent", and releases the semaphore.
 4. Setting ParentEndedEvent and Cleanup:
-```
+``` cpp
 SetEvent(hEndedEvent);
 
 CloseHandle(hSemaphore);
@@ -134,7 +134,7 @@ After processing all events, the parent process sets the "ParentEndedEvent" to n
 #### Boss Process:
 
 1. Creating Mutex and Semaphore:
-```
+``` cpp
 HANDLE hMutex = NULL;
 hMutex = CreateMutexW(NULL, FALSE, L"Mutex");
 // Error handling
@@ -145,7 +145,7 @@ hSemaphore = CreateSemaphoreW(NULL, 2, 2, L"Semaphore");
 ```
 The program creates a mutex and a semaphore with initial and maximum counts of 2.
 2. User Input for Number of Parent and Child Processes:
-```
+``` cpp
 int nParentPr;
 int nChildPr;
 int nParentMsg;
@@ -159,7 +159,7 @@ cin >> nChildPr;
 ```
 The program prompts the user to input the number of parent and child processes.
 3. Creating Parent and Child Processes:
-```
+``` cpp
 // ...
 for (int i = 0; i < nParentPr; i++)
 {
@@ -182,7 +182,7 @@ for (int i = 0; i < nChildPr; i++)
 ```
 Two loops are used to create the parent and child processes. A new process is created for each parent and child with their respective executable files (parent.exe and child.exe).
 4. Processing Messages from Parent and Child Processes:
-```
+``` cpp
 for (int i = 0; i < nSumMsg + nSumPr; i++)
 {
     // ...
@@ -190,7 +190,7 @@ for (int i = 0; i < nSumMsg + nSumPr; i++)
 ```
 The program enters a loop that iterates based on the total number of messages and processes. It prints messages and the termination status of each parent and child process.
 5. Cleaning Up Resources:
-```
+``` cpp
 // ...
 for (int i = 0; i < nParentPr; i++)
 {
