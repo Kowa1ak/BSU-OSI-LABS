@@ -16,7 +16,7 @@ Implement Lab 3 in c++11 (c++11 standard):
 
 1. The work function:
 
-```
+``` cpp
 void work(int sleepTime) {
     std::unique_lock<std::mutex> lock(mtx);
 
@@ -39,7 +39,7 @@ This function is executed in one thread. It uses a mutex (mtx) to protect the sh
 
 2. The CountElement function:
 
-```
+``` cpp
 void CountElement() {
     std::unique_lock<std::mutex> lock(mtx);
 
@@ -54,7 +54,7 @@ This function is executed in another thread. It also uses the mutex (mtx) to pro
 
 3. The main function:
 
-```
+``` cpp
 int main() {
     // ...
 
