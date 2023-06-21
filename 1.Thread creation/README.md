@@ -26,7 +26,7 @@ Output the number of elements multiples of 5 from the array elements. Finish you
 
 1. Entering an array:
 
-```
+``` cpp
 int n;
 cout << "Enter size of array: ";
 cin >> n;
@@ -44,7 +44,7 @@ Here the program asks the user for the size of the array and its elements. The a
 
 2. Creating a stream:
 
-```
+``` cpp
 HANDLE hThread;
 DWORD IDThread;
 hThread = CreateThread(NULL, 0, worker, (void*)array, 0, &IDThread);
@@ -56,7 +56,7 @@ Here, a new thread is created using the CreateThread function, passing the worke
 
 3. Worker function:
 
-```
+``` cpp
 DWORD WINAPI worker(LPVOID array) {
     int count = 0;
     for (int i = 1; i < ((int*)array)[0] + 1; i++) {
@@ -72,7 +72,7 @@ The worker function represents the entry point for a new thread. It iterates thr
 
 4. Flow control:
 
-```
+``` cpp
 SuspendThread(hThread);
 Sleep(5000);
 ResumeThread(hThread);
